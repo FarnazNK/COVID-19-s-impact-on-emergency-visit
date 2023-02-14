@@ -1,18 +1,85 @@
-Introduction
-This code preprocesses two dataframes, ED_Volumes_2019 and ED_Volumes_2020, to prepare the data for analysis. The code first converts the date columns in both dataframes to datetime format and adds a "Year" column to both dataframes to indicate the year of the visit.
+Emergency Department Data
 
-Data Cleaning
-The code then performs several data cleaning steps, including:
+This repository contains data related to Emergency Departments (ED) in Canada. The data is from 2019 and 2020 and contains information about ED visits, wait times, and patient demographics. There are several data files in this repository:
 
-Handling null values in the TWIB columns
-Converting the AGE_NUM and TWIB columns to int64 format
-Removing outliers from the numerical columns (AGE_NUM and TWIB)
-Calculating the difference between corresponding columns in ED_Volumes_2020 and ED_Volumes_2019
-Outlier Detection
-Outliers in the AGE_NUM and TWIB columns are detected using box plots, and any values outside of the median +/- 1.5 times the interquartile range are removed.
+ED_IA_2020
 
-New Column Creation
-The code creates a new column for each column common to both ED_Volumes_2019 and ED_Volumes_2020, with the new column name being the original column name followed by "_difference". The values in each new column are the difference between the corresponding values in ED_Volumes_2020 and ED_Volumes_2019.
+This file contains information about the number of patients who were admitted to an ED in Canada in 2020, grouped by province and by month (March, April, May, and June).
 
-Conclusion
-This code performs important preprocessing steps to clean and prepare the ED_Volumes_2019 and ED_Volumes_2020 dataframes for analysis. The code handles missing values, removes outliers, and creates new columns to show the difference between corresponding columns in both dataframes.
+ED_IA_2019.csv
+
+This file contains information about the number of patients who were admitted to an ED in Canada in 2019, grouped by province and by month (March, April, May, and June).
+
+ED_HB_2020.csv
+
+This file contains information about the number of patients who were seen in an ED in Canada in 2020, grouped by province and by month (March, April, May, and June).
+
+ED_HB_2019.csv
+
+This file contains information about the number of patients who were seen in an ED in Canada in 2019, grouped by province and by month (March, April, May, and June).
+
+wt.csv
+
+This file contains information about the wait times for patients in EDs in Canada, including the hospital name, patient demographics, triage level, and postal code.
+
+ED_Volumes_2019.csv
+
+This file contains information about the number of ED visits in Canada in 2019, grouped by date and by province.
+
+ED_Volumes_2020.csv
+
+This file contains information about the number of ED visits in Canada in 2020, grouped by date and by province.
+
+Data Dictionary
+
+The following is a description of the variables in each file:
+
+ED_IA_2020.csv and ED_IA_2019.csv
+
+Province/territory: The province or territory in Canada where the ED is located.
+
+March: The number of patients admitted to the ED in March.
+
+April: The number of patients admitted to the ED in April.
+
+May: The number of patients admitted to the ED in May.
+
+June: The number of patients admitted to the ED in June.
+
+ED_HB_2020.csv and ED_HB_2019.csv
+
+Province/territory: The province or territory in Canada where the ED is located.
+
+March: The number of patients seen in the ED in March.
+
+April: The number of patients seen in the ED in April.
+
+May: The number of patients seen in the ED in May.
+
+June: The number of patients seen in the ED in June.
+
+wt.csv
+
+hosp: The name of the hospital.
+
+FACILITY_CLASSIFICATION: The classification of the facility (e.g. acute care, rehabilitation, etc.).
+
+GENDER: The gender of the patient.
+
+AGE_NUM: The age of the patient.
+
+TRIAGE_LEVEL_CODE: The triage level of the patient.
+
+POSTAL_CODE: The postal code of the patient.
+
+TWIB: The wait time for the patient, in minutes.
+
+ED_Volumes_2019.csv and ED_Volumes_2020.csv
+
+Date_of_visit: The date of the ED visit.
+
+P.E.I.: The number of ED visits in Prince Edward Island.
+
+N.S.: The number of ED visits in Nova Scotia.
+
+Que.: The number of ED visits in Quebec.
