@@ -1,85 +1,32 @@
-Emergency Department Data
+ED Volumes Data Readme
 
-This repository contains data related to Emergency Departments (ED) in Canada. The data is from 2019 and 2020 and contains information about ED visits, wait times, and patient demographics. There are several data files in this repository:
+This repository contains data for emergency department (ED) volumes for the years 2019 and 2020. The data is stored in two dataframes, ED_Volumes_2019 and 
 
-ED_IA_2020
+ED_Volumes_2020.
 
-This file contains information about the number of patients who were admitted to an ED in Canada in 2020, grouped by province and by month (March, April, May, and June).
+Data Pre-processing
 
-ED_IA_2019.csv
+Before analyzing the data, certain pre-processing steps were taken to clean and prepare the data. The following steps were performed:
 
-This file contains information about the number of patients who were admitted to an ED in Canada in 2019, grouped by province and by month (March, April, May, and June).
+The Date_of_visit column was converted to datetime format in both dataframes.
 
-ED_HB_2020.csv
+In the wt dataset, there were 54 missing values in the TWIB column. The missing values were filled with the mean value of the column.
 
-This file contains information about the number of patients who were seen in an ED in Canada in 2020, grouped by province and by month (March, April, May, and June).
+The AGE_NUM and TWIB columns were converted to int64 data type.
 
-ED_HB_2019.csv
+The numerical and categorical columns in the wt dataset were separated.
 
-This file contains information about the number of patients who were seen in an ED in Canada in 2019, grouped by province and by month (March, April, May, and June).
+The descriptive statistics of the numerical columns were computed. It was observed that the AGE_NUM column had a maximum value of 999 and a minimum value of 0, which 
+indicates the presence of outliers.
 
-wt.csv
+Outliers in the numerical columns were removed. The 999 value in the AGE_NUM column was removed and outliers in the TWIB column were removed using the IQR method.
 
-This file contains information about the wait times for patients in EDs in Canada, including the hospital name, patient demographics, triage level, and postal code.
+A new column was created in the ED_Volumes_2020 dataframe for each common column in both dataframes, with the new column name being the original column name followed by "_difference". The values in each new column were the difference between the corresponding values in ED_Volumes_2020 and ED_Volumes_2019.
 
-ED_Volumes_2019.csv
+The Year column was created in the ED_Volumes_2019 dataframe by extracting the year from the Date_of_visit column.
 
-This file contains information about the number of ED visits in Canada in 2019, grouped by date and by province.
+Data Description
 
-ED_Volumes_2020.csv
+The dataframes contain information about ED visits, including the date of the visit, patient age, and various other features. The wt dataset contains 66,674 observations and several columns, including numerical and categorical features. The ED_Volumes_2019 and ED_Volumes_2020 dataframes contain information about ED visits for the respective years, with the ED_Volumes_2020 dataframe also containing the differences between the values in the corresponding columns of both dataframes.
 
-This file contains information about the number of ED visits in Canada in 2020, grouped by date and by province.
-
-Data Dictionary
-
-The following is a description of the variables in each file:
-
-ED_IA_2020.csv and ED_IA_2019.csv
-
-Province/territory: The province or territory in Canada where the ED is located.
-
-March: The number of patients admitted to the ED in March.
-
-April: The number of patients admitted to the ED in April.
-
-May: The number of patients admitted to the ED in May.
-
-June: The number of patients admitted to the ED in June.
-
-ED_HB_2020.csv and ED_HB_2019.csv
-
-Province/territory: The province or territory in Canada where the ED is located.
-
-March: The number of patients seen in the ED in March.
-
-April: The number of patients seen in the ED in April.
-
-May: The number of patients seen in the ED in May.
-
-June: The number of patients seen in the ED in June.
-
-wt.csv
-
-hosp: The name of the hospital.
-
-FACILITY_CLASSIFICATION: The classification of the facility (e.g. acute care, rehabilitation, etc.).
-
-GENDER: The gender of the patient.
-
-AGE_NUM: The age of the patient.
-
-TRIAGE_LEVEL_CODE: The triage level of the patient.
-
-POSTAL_CODE: The postal code of the patient.
-
-TWIB: The wait time for the patient, in minutes.
-
-ED_Volumes_2019.csv and ED_Volumes_2020.csv
-
-Date_of_visit: The date of the ED visit.
-
-P.E.I.: The number of ED visits in Prince Edward Island.
-
-N.S.: The number of ED visits in Nova Scotia.
-
-Que.: The number of ED visits in Quebec.
+This codebase and the accompanying data provide a starting point for further analysis of ED volumes over time and the potential impact of different factors on ED utilization.
